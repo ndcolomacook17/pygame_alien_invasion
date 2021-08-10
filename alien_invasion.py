@@ -6,6 +6,9 @@ import pygame
 from settings import Settings
 from ship import Ship
 
+#Imports all fxns from this module
+import game_functions as gf
+
 def run_game():
     # Init game, make instance of Settings to have display_screen objects,
     # and set background color
@@ -23,18 +26,9 @@ def run_game():
 
     # Start the main loop for the game
     while True:
+        gf.check_events()
+        gf.update_screen(ai_settings, display_screen, ship)
 
-        # Watch for keyboard and mouse events
-        for event in pygame.event.get():
-            if event in pygame.event.get() == pygame.QUIT:
-                sys.exit()
-
-        # Redraw screen during each pass thru loop
-        display_screen.fill(ai_settings.bg_color)
-        ship.blitme()
-
-        # Makes most recently drawn screen visible
-        pygame.display.flip()
 
 # Maybe use if __name__ == '__main__': here
 run_game()
